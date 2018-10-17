@@ -1,0 +1,23 @@
+namespace org.secrak.model.saleDocument
+
+import org.secrak.model.invoice.User
+import org.secrak.model.invoice.Phone
+
+asset SaleDocument identified by saleDocumentId {
+	o String saleDocumentId
+    --> Phone phone 
+    --> User ownerId 
+    --> User buyerId
+    o DateTime issuedDate
+    o Double price	default = 0.0
+    o String currency	default = "USD"
+    o Integer warranty	range = [0,]
+}
+  transaction CreateSaleDocument{
+	o String saleDocumentId
+  	o DateTime issuedDate
+}
+  
+ event saleDocumentCreated{
+	o String saleDocumentId
+}

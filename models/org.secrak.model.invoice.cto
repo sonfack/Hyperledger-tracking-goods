@@ -1,0 +1,50 @@
+/**
+ * New model file
+ */
+
+namespace org.secrak.model.invoice
+
+asset Phone identified by emei{
+	o String emei
+    o String brand 
+    o String model
+}
+
+asset User identified by userId{
+	o String userId
+    o String userName 
+    o String userPhone
+    o Boolean status default = true
+}
+
+asset Invoice identified by invoiceId{
+	o String invoiceId
+    --> Phone phone
+    --> Shop shop 
+    --> User user
+    o Double price default = 0.0
+  	o String currency	default = "USD"
+    o Integer warranty range = [0,]
+    o DateTime issuedDate
+}
+    
+
+participant Shop identified by shopId{
+	o String shopId 
+    o String shopName
+    o Boolean status default = true
+}
+  
+participant Regulator identified by regulatorId {
+	o String regulatorId
+  	o String regulatorName 
+}
+
+transaction CreateInvoice{
+	o String invoiceId
+  	o DateTime issuedDate
+}
+
+event InvoiceCreated{
+	o String invoiceId
+}
