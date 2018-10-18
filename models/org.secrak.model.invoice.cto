@@ -45,6 +45,16 @@ transaction CreateInvoice{
   	o DateTime issuedDate
 }
 
+transaction CreateShop{
+	o String shopId
+  	o DateTime issuedDate
+}
+  
+transaction CreateUser{
+	o String userId
+  	o DateTime issuedDate
+}
+  
 event InvoiceCreated{
 	o String invoiceId
 }
